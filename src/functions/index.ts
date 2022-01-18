@@ -1,2 +1,2 @@
 export { default as hello } from './hello'
-export { getAllOffers, hiFunction } from './offers'
+export { getAllOffers, createNewOffer, getOfferById } from './offers'

@@ -1,7 +1,12 @@
 import type { AWS } from '@serverless/typescript'
 
 import hello from '@functions/hello'
-import { getAllOffers, hiFunction } from '@functions/offers'
+import {
+  getAllOffers,
+  createNewOffer,
+  getOfferById,
+  deleteOfferById
+} from '@functions/offers'
 
 const SERVICE_NAME = "fidel-test"
 
@@ -21,12 +26,28 @@ const serverlessConfiguration: AWS = {
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000'
     },
     lambdaHashingVersion: '20201221',
+    iamRoleStatements: [
+      {
+        Effect: "Allow",
+        Action: [
+          "dynamodb:Query",
+          "dynamodb:Scan",
+          "dynamodb:GetItem",
+          "dynamodb:PutItem",
+          "dynamodb:UpdateItem",
+          "dynamodb:DeleteItem",
+        ],
+        Resource: "*",
+      }
+    ],
   },
   // import the function via paths
   functions: {
     hello,
     getAllOffers,
-    hiFunction
+    createNewOffer,
+    getOfferById,
+    deleteOfferById
   },
   package: { individually: true },
   custom: {
