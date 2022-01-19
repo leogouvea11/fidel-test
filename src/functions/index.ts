@@ -1,2 +1,15 @@
-export { default as hello } from './hello'
-export { getAllOffers, createNewOffer, getOfferById } from './offers'
+export {
+  getAllOffers,
+  createNewOffer,
+  getOfferById,
+  deleteOfferById,
+  addNewLocationToOfferBylocationId,
+  addNewLocationToOfferByBrandId
+} from './offers'
+
+export {
+  createNewLocation,
+  deleteLocationById,
+  getAllLocations,
+  getLocationById
+} from './locations'

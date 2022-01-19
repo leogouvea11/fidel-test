@@ -3,7 +3,9 @@ import { handlerPath } from '@libs/handlerResolver'
 import {
   createNewOfferSchema,
   getOfferByIdSchema,
-  deleteOfferByIdSchema
+  deleteOfferByIdSchema,
+  addNewLocationToOfferByLocationIdSchema,
+  addNewLocationToOfferByBrandIdSchema
 } from './schemas'
 
 export const getOfferById = {
@@ -33,6 +35,40 @@ export const createNewOffer = {
         request: {
           schemas: {
             'application/json': createNewOfferSchema
+          }
+        }
+      }
+    }
+  ]
+}
+
+export const addNewLocationToOfferBylocationId = {
+  handler: `${handlerPath(__dirname)}/handler.addNewLocationToOfferBylocationId`,
+  events: [
+    {
+      http: {
+        method: 'post',
+        path: `offers/addNewLocation`,
+        request: {
+          schemas: {
+            'application/json': addNewLocationToOfferByLocationIdSchema
+          }
+        }
+      }
+    }
+  ]
+}
+
+export const addNewLocationToOfferByBrandId = {
+  handler: `${handlerPath(__dirname)}/handler.addNewLocationToOfferByBrandId`,
+  events: [
+    {
+      http: {
+        method: 'post',
+        path: `offers/addNewBrand`,
+        request: {
+          schemas: {
+            'application/json': addNewLocationToOfferByBrandIdSchema
           }
         }
       }

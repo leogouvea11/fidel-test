@@ -15,6 +15,24 @@ export const getOfferByIdSchema = {
   required: ['id']
 } as const
 
+export const addNewLocationToOfferByLocationIdSchema = {
+  type: "object",
+  properties: {
+    id: { type: 'string' },
+    locationId: { type: 'string' },
+  },
+  required: ['id', 'locationId']
+} as const
+
+export const addNewLocationToOfferByBrandIdSchema = {
+  type: "object",
+  properties: {
+    id: { type: 'string' },
+    brandId: { type: 'string' },
+  },
+  required: ['id', 'brandId']
+} as const
+
 export const deleteOfferByIdSchema = {
   type: "object",
   properties: {

@@ -1,12 +1,21 @@
 import type { AWS } from '@serverless/typescript'
 
-import hello from '@functions/hello'
 import {
   getAllOffers,
   createNewOffer,
   getOfferById,
-  deleteOfferById
+  deleteOfferById,
+  addNewLocationToOfferBylocationId,
+  addNewLocationToOfferByBrandId
 } from '@functions/offers'
+
+import {
+  createNewLocation,
+  deleteLocationById,
+  getAllLocations,
+  getLocationById,
+  setHasOffer
+} from '@functions/locations'
 
 const SERVICE_NAME = "fidel-test"
 
@@ -38,16 +47,29 @@ const serverlessConfiguration: AWS = {
           "dynamodb:DeleteItem",
         ],
         Resource: "*",
+      },
+      {
+        Effect: "Allow",
+        Action: [
+          "lambda:InvokeFunction",
+          "lambda:InvokeAsync",
+        ],
+        Resource: "*",
       }
     ],
   },
-  // import the function via paths
   functions: {
-    hello,
     getAllOffers,
     createNewOffer,
     getOfferById,
-    deleteOfferById
+    deleteOfferById,
+    addNewLocationToOfferBylocationId,
+    addNewLocationToOfferByBrandId,
+    createNewLocation,
+    deleteLocationById,
+    getAllLocations,
+    getLocationById,
+    setHasOffer
   },
   package: { individually: true },
   custom: {

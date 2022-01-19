@@ -7,10 +7,11 @@
     "noUnusedParameters": true,
     "removeComments": true,
     "sourceMap": true,
-    "target": "ES2020",
-    "outDir": "lib"
+    "target": "es6",
+    "outDir": "lib",
+    "esModuleInterop": true
   },
-  "include": ["src/**/*.ts", "serverless.ts"],
+  "include": ["src/**/*.ts", "serverless.ts", "src/**/*.unit.test.js"],
   "exclude": [
     "node_modules/**/*",
     ".serverless/**/*",
